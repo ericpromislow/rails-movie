@@ -4,7 +4,7 @@
 capybara-*.html
 .rspec
 /.bundle
-/vendor/bundle
+/vendor
 /log/*
 /tmp/*
 /db/*.sqlite3

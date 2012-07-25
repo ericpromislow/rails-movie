@@ -1,0 +1,13 @@
+name: movies
+instances: 1
+framework:
+  type: rails3
+  runtime: ruby19
+mem: 128
+services:
+  movies-mysql: mysql
+#processes:
+#  web: bundle exec rails server
+#hooks:
+#post-staging:
+#- bundle exec rake db:create
