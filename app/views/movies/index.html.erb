@@ -1,8 +1,15 @@
 <h1>Listing movies</h1>
 
+<%= form_tag movies_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
 <table>
   <tr>
-    <th>Name</th>
+    <th>Title</th>
     <th>Year</th>
     <th>Rating</th>
     <th></th>
@@ -12,7 +19,7 @@
 
 <% @movies.each do |movie| %>
   <tr>
-    <td><%= movie.name %></td>
+    <td><%= movie.title %></td>
     <td><%= movie.year %></td>
     <td><%= movie.rating %></td>
     <td><%= link_to 'Show', movie %></td>

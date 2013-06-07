@@ -2,7 +2,11 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
   def index
-    @movies = Movie.all
+    if params[:query].present?
+      @movies = Movie.search(params)
+    else
+      @movies = Movie.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
