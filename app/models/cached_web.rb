@@ -31,6 +31,9 @@ class CachedWeb
       # Don't hit a site more than once per 5 seconds
       time_to_wait = (@@min_wait_times[domain] || 5) -
         (Time.now - (@@last_request_times[domain] || Time.at(0)))
+
+      puts "#{Time.now} - (#{@@last_request_times[domain]}) = #{ (Time.now - (@@last_request_times[domain])) }"
+
       if time_to_wait > 0  
         puts "Waiting for #{time_to_wait} on domain #{domain}"
         sleep time_to_wait
@@ -38,7 +41,7 @@ class CachedWeb
       
       @agent = Mechanize.new unless @agent
       page = @agent.get(url) 
-      @@last_request_times[uri.host]
+      @@last_request_times[domain] = Time.now
       content = page.body
       redirect_url = page.uri.to_s
       headers = page.header

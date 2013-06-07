@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<a href="<%=@movie.imdb_url%>""><img src="<%= @movie.poster%>"/></a>
 <p>
   <b>Title:</b>
   <%= @movie.title %>
@@ -15,6 +16,26 @@
   <%= @movie.rating %>
 </p>
 
+
+<p>
+  <b>Plot:</b>
+  <%= @movie.plot_simple %>
+</p>
+
+<p>
+  <b>directors:</b>
+  <%= @movie.directors.to_sentence %>
+</p>
+
+<p>
+  <b>actors:</b>
+  <%= @movie.actors.to_sentence %>
+</p>
+
+<p>
+  <b>country:</b>
+  <%= @movie.country.to_sentence %>
+</p>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
