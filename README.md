@@ -9,4 +9,5 @@ Added Tire/ElasticSearch
 To get started:
  * rake db:migrate
  * rake imdb:populate dirname="/Volumes/Data-1/Movies"
- * 
+
+Thanks to http://imdbapi.org/ for their excellent API!
