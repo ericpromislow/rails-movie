@@ -23,7 +23,7 @@
     <td><%= movie.year %></td>
     <td><%= movie.rating %></td>
     <td><%= movie.plot_simple %></td>
-    <td><%= movie.actors.to_sentence %></td>
+    <td><%= movie.actors ? movie.actors.to_sentence : "" %></td>
     <td><%= link_to 'Show', movie %></td>
     <td><a href="<%= movie.imdb_url%>" target=_blank><img src="<%= movie.poster %>" height="75px"/></a></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>

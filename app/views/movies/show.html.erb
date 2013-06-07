@@ -24,17 +24,17 @@
 
 <p>
   <b>directors:</b>
-  <%= @movie.directors.to_sentence %>
+  <%= @movie.directors ? @movie.directors.to_sentence : "" %>
 </p>
 
 <p>
   <b>actors:</b>
-  <%= @movie.actors.to_sentence %>
+  <%= @movie.actors ? @movie.actors.to_sentence : "" %>
 </p>
 
 <p>
   <b>country:</b>
-  <%= @movie.country.to_sentence %>
+  <%= @movie.country ? @movie.country.to_sentence : "" %>
 </p>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |

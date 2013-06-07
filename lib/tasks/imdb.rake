@@ -8,6 +8,7 @@ namespace :imdb do
       if name.gsub(".","").present?
           title = name.split(".").first
           url = "http://imdbapi.org/?q=#{title}"
+          sleep 5
           content, redirect_url, headers  = CachedWeb.get(:url=>url) rescue next
           ret = JSON.parse(content)
           if m = ret.first and (not ret.is_a?(Hash))
