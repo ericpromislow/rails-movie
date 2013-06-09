@@ -44,7 +44,12 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.xml
   def create
-    @movie = Movie.new(params[:movie])
+    title = params[:movie][:title]
+    if movie = Movie.create_from_title(title)
+      @movie = movie
+    else
+      @movie = Movie.new(params[:movie])
+    end
 
     respond_to do |format|
       if @movie.save
@@ -75,7 +80,7 @@ class MoviesController < ApplicationController
 
   # DELETE /movies/1
   # DELETE /movies/1.xml
-  def destroy
+  def destory
     @movie = Movie.find(params[:id])
     @movie.destroy
 

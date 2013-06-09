@@ -32,7 +32,7 @@ class CachedWeb
       time_to_wait = (@@min_wait_times[domain] || 5) -
         (Time.now - (@@last_request_times[domain] || Time.at(0)))
 
-      puts "#{Time.now} - (#{@@last_request_times[domain]}) = #{ (Time.now - (@@last_request_times[domain])) }"
+      puts "#{Time.now} - (#{@@last_request_times[domain]}) = #{ (Time.now - (@@last_request_times[domain].to_i)) }"
 
       if time_to_wait > 0  
         puts "Waiting for #{time_to_wait} on domain #{domain}"

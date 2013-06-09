@@ -17,4 +17,20 @@ class Movie < ActiveRecord::Base
       query { string params[:query], default_operator: "AND" } if params[:query].present?
     end
   end
+
+  def self.create_from_title(intitle)
+    url = "http://imdbapi.org/?q=#{intitle}"
+    content, redirect_url, headers  = CachedWeb.get(:url=>url)
+    ret = JSON.parse(content)
+    if m = ret.first and (not ret.is_a?(Hash))
+      puts "Create movie: #{m}"
+      if movie = Movie.find_by_title(m['title'].to_s)
+        return movie
+      else
+        @movie = Movie.new(m)
+        return @movie
+      end
+    end
+    return nil
+  end
 end
